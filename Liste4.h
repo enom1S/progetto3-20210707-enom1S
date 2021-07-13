@@ -51,19 +51,9 @@ public:
         l++;
     }
 
-	/*void insert_B(T x){
-        Nodo_DL<T>* newNode=new Nodo_DL<T>(x);
-        newNode->value=x;
-        newNode->pre=nullptr;    //essendo in testa, non avrò nessun elemento alla mia sinistra
-        newNode->succ=this->testa;
-        this->testa=newNode;
-        this->coda=newNode;
-	}*/
-
-
 	void insert(T x) {
         Nodo_DL<T>* newNodo = new Nodo_DL<T>(x);
-        newNodo->setPrev(nullptr);    //essendo in testa, non avrò nessun elemento alla mia sinistra
+        newNodo->setPrev(nullptr);    //essendo in testa, non avrÃ² nessun elemento alla mia sinistra
         newNodo->setNext(this->testa);
         this->testa = newNodo;
         l++;
