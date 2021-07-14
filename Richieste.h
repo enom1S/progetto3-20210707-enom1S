@@ -93,7 +93,7 @@ void make_groups(ListaDL<Studente>* lista1, ListaDL<Studente>* lista2, ListaDL<G
 	while (len1 && len2) {  //fino quando non scorro tutto
 		Gruppo temp(id_s);
 		a=current1;
-		if(len2 < 2)break; //fino a quando non vengono svuotati secondo i criteri richiesti
+		if(len2 < 2)break; //fino a quando non vengono svuotate secondo i criteri richiesti
 		if(len1 < 1)break;
 		b1=current2;  //passa al nodo della seconda lista
 		b2=current2->getSucc();   //passa al successivo del nodo precedente
@@ -118,6 +118,7 @@ void make_groups(ListaDL<Studente>* lista1, ListaDL<Studente>* lista2, ListaDL<G
 	Gruppo temp(id_s);   //stampa gli id
 
     //INSERIMENTO DEGLI STUDENTI RIMANENTI
+
 	for(int i =0; i < len1; i++){
 		a=current1;
 		current1 = current1->getSucc();
