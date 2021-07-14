@@ -34,26 +34,35 @@ public:
     int getLung() const{return this->l;}
 
     void insert_A(T x){
-        Nodo_DL<T>* newNode=new Nodo_DL<T>(x);
-        Nodo_DL<T>* iter=this->testa;
-        newNode->value=x;
-        if(this->testa==nullptr || this->testa->value>x){
-            newNode->succ=this->testa;
-            this->testa=newNode;
+        Nodo_DL<T>* nuovo= new Nodo_DL<T>(x);
+        nuovo->value=x;
+
+        Nodo_DL<T>* iter = this->testa;
+        if(this->testa == nullptr){
+            nuovo->succ=nullptr;
+            this->testa=nuovo;
+            nuovo->pre=nullptr;
         }
-        else {
-            while((iter->succ!=nullptr) && (x > iter->succ->value)){
-                iter=iter->succ;
+        else if(this->testa->value >x){
+            nuovo->succ=this->testa;
+            nuovo->pre= nullptr;
+            this->testa->pre=nuovo;
+            this->testa=nuovo;
             }
-            newNode->succ=iter->succ;
-            iter->succ=newNode;
-        }
-        l++;
+        else {
+            while((iter->succ!=nullptr)&&(x > iter->succ->value))iter = iter->succ;
+            nuovo->succ = iter->succ;
+            nuovo->pre = iter;
+            if(iter->succ!=nullptr)iter->succ->pre = nuovo;
+            iter->succ = nuovo;
+            }
+		l++;
     }
+
 
 	void insert(T x) {
         Nodo_DL<T>* newNodo = new Nodo_DL<T>(x);
-        newNodo->setPrev(nullptr);    //essendo in testa, non avrò nessun elemento alla mia sinistra
+        newNodo->setPrev(nullptr);
         newNodo->setNext(this->testa);
         this->testa = newNodo;
         l++;
